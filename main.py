@@ -56,7 +56,6 @@ class CoffeeApp(QtWidgets.QMainWindow):
         super(CoffeeApp, self).__init__()
         uic.loadUi('main.ui', self)
 
-        # Отключаем возможность редактирования ячеек
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
 
         self.load_coffee_data()
