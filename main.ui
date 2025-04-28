@@ -21,7 +21,7 @@
                             <enum>QAbstractItemView::NoEditTriggers</enum>
                         </property>
                         <property name="selectionBehavior">
-                            <enum>QAbstractItemView::SelectRows</enum> <!-- Выбор строк -->
+                            <enum>QAbstractItemView::SelectRows</enum>
                         </property>
                         <column>
                             <property name="text">
@@ -60,7 +60,23 @@
                         </column>
                     </widget>
                 </item>
+                <item>
+                    <widget class="QPushButton" name="pushButtonAdd">
+                        <property name="text">
+                            <string>Add Coffee</string>
+                        </property>
+                    </widget>
+                </item>
+                <item>
+                    <widget class="QPushButton" name="pushButtonEdit">
+                        <property name="text">
+                            <string>Edit Coffee</string>
+                        </property>
+                    </widget>
+                </item>
             </layout>
         </widget>
     </widget>
+    <resources/>
+    <connections/>
 </ui>
