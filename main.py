@@ -1,11 +1,24 @@
 import sqlite3
 import sys
+import os
 from PyQt6 import QtWidgets
 from generated_ui.main_ui import Ui_MainWindow
 from generated_ui.add_edit_coffee_form_ui import Ui_Dialog
 
 
-DATABASE_PATH = "data/coffee.sqlite"
+# Определение пути к ресурсам
+def resource_path(relative_path):
+    """Получить абсолютный путь к ресурсу, работает для разработки и PyInstaller."""
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
+# Путь к базе данных
+DATABASE_PATH = resource_path("data/coffee.sqlite")
 conn = sqlite3.connect(DATABASE_PATH)
 cursor = conn.cursor()
 
