@@ -1,17 +1,20 @@
 import sqlite3
 import sys
-from PyQt6 import QtWidgets, uic
+from PyQt6 import QtWidgets
+from generated_ui.main_ui import Ui_MainWindow
+from generated_ui.add_edit_coffee_form_ui import Ui_Dialog
 
 
-conn = sqlite3.connect('coffee.sqlite')
+DATABASE_PATH = "data/coffee.sqlite"
+conn = sqlite3.connect(DATABASE_PATH)
 cursor = conn.cursor()
 
 
-class AddEditCoffeeForm(QtWidgets.QDialog):
+class AddEditCoffeeForm(QtWidgets.QDialog, Ui_Dialog):
     
     def __init__(self, coffee_id=None):
         super(AddEditCoffeeForm, self).__init__()
-        uic.loadUi('addEditCoffeeForm.ui', self)
+        self.setupUi(self)
 
         # Если передан ID, загружаем данные для редактирования
         self.coffee_id = coffee_id
@@ -51,10 +54,10 @@ class AddEditCoffeeForm(QtWidgets.QDialog):
         self.accept()
         
 
-class CoffeeApp(QtWidgets.QMainWindow):
+class CoffeeApp(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(CoffeeApp, self).__init__()
-        uic.loadUi('main.ui', self)
+        self.setupUi(self)
 
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
 
